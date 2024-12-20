@@ -58,7 +58,7 @@ int main() {
                 break;
                 
             case 3:
-            	
+            	printHealthData(&health_data); //Me : 
                 break;
                 
             case 4:

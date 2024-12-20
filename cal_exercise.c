@@ -34,14 +34,28 @@ void loadExercises(const char* EXERCISEFILEPATH) {
     }
 
     // ToCode: to read a list of the exercises from the given file
-    while ( ) {
+    
+	int n = 500;	//Me : Defining for fgets()
+	char str[n];	//Me : Defining for fgets()
+	
+	while (fgets(str, n, file) != NULL) {	//Me : Read line by line until there is no more reading to read
     	
-        if (exercise_list_size >= MAX_EXERCISES){
+    	char *exercise_name = strtok(str, " ");	//Me : the beginning of a sentence divided by a space - using strtok for dividing a sentence
+    	char *calories_burned_per_minute = strtok(NULL, "\n");	//Me : dividing the remaining parts of a sentence by /n - using strtok 
+		
+		strcpy(exercise_list[exercise_list_size].exercise_name, exercise_name);	//Me : save exercise_list as exercise_name in exercise_list_size
+		exercise_list[exercise_list_size].calories_burned_per_minute = atoi(calories_burned_per_minute);	//Me : save as exercise_list of exercise_list_size's calories_burned_per_minute- Use atoi to replace string with integer
+    	
+    	exercise_list_size++;	//Me : Increase the number of saved exercise_lists -> to see if there are more than 100
+        
+		if (exercise_list_size >= MAX_EXERCISES){
         	break;
 		}
     }
 
     fclose(file);
+    
+    inputExercise(); //Me : inputExercise function is executed immediately
 }
 
 
@@ -60,11 +74,16 @@ void inputExercise(HealthData* health_data) {
     
     // ToCode: to provide the options for the exercises to be selected
     printf("The list of exercises: \n");
+    
+    for (i=0; i < exercise_list_size; i++)	//Me : Repeat as many values as stored in exercise_list
+    	printf("%d. %s (%d kcal burned per min.)\n", i+1, exercise_list[i].exercise_name, exercise_list[i].calories_burned_per_minute);	//Me : Output the appropriate numbers and exercise menus and calories burne per min
+    printf("%d. Exit\n", exercise_list_size+1);	//Me : Output Exit Menu to Last Number
 
 
     // ToCode: to enter the exercise to be chosen with exit option
 
- 
+ 	printf("Choose (1-%d): ", exercise_list_size+1);	//Me : Output Choose
+    scanf("%d", &choice);	//Me : Scan the menu selected by the user and save it to choice
     
     // To enter the duration of the exercise
     printf("Enter the duration of the exercise (in min.): ");

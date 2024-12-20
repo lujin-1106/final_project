@@ -46,6 +46,7 @@ int main() {
 		// ToCode: to run the sysmtem based on the user's choice
         switch (choice) {
             case 1:
+            	loadExercises("exercises.txt");
             	
                 break;
                 

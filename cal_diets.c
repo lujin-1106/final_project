@@ -35,7 +35,7 @@ void loadDiets(const char* DIETFILEPATH) {
 
      // ToCode: to read a list of the diets from the given file
     
-    int n = 500;	//Me : Defining for fgets()
+    int n = 100;	//Me : Defining for fgets()
 	char str[n];	//Me : Defining for fgets()
 	
 	while (fgets(str, n, file) != NULL) {	//Me : Read line by line until there is no more reading to read

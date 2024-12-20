@@ -26,12 +26,15 @@ int main() {
     // Tocode: to read the list of the exercises and diets
     loadExercises("exercises.txt");	//Me : Run the loadExercises function with the "exercises.txt" file as a parameter
     loadDiets("diets.txt");	//Me : Run the loadDiets function with the "diets.txt" file as a parameter
-
+    
     // ToCode: to run the "Healthcare Management Systems" until all calories are used up or the user wants to exit the system
     do {
-    	if ( ){
-            printf("You have consumed all your calories for today! \n");
-		}
+    	int remain_calories = health_data.total_calories_intake - 1300 - health_data.total_calories_burned;	//Me : Calculation of remaining calories
+    	
+    	if (remain_calories == 0){	//Me : When the remaining calories are zero
+            printf("You have consumed all your calories for today! \n");	
+            choice = 4;	//Me : Save the choice value to 4 -> enable termination
+		} 
 		else{
 			printf("\n=======================================================================\n");
         	printf("[Healthcare Management Systems] \n");
@@ -47,11 +50,11 @@ int main() {
 		// ToCode: to run the sysmtem based on the user's choice
         switch (choice) {
             case 1:
-            	inputExercise(); //Me : inputExercise function is executed
+            	inputExercise(&health_data); //Me : inputExercise function is executed
                 break;
                 
             case 2:
-            	inputDiet(health_data); //Me : inputDiet function is executed
+            	inputDiet(&health_data); //Me : inputDiet function is executed
                 break;
                 
             case 3:
@@ -68,7 +71,7 @@ int main() {
                 printf("[Error] Invalid option. \n");
                 printf("Please try again! \n");
         }
-    } while ( );
+    } while (choice != 4);	//Me : Repeat over and over again when the choice value is not 4 = If the choice value is 4, it ends
 
     return 0;
 }

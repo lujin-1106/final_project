@@ -35,7 +35,7 @@ void loadExercises(const char* EXERCISEFILEPATH) {
 
     // ToCode: to read a list of the exercises from the given file
     
-	int n = 500;	//Me : Defining for fgets()
+	int n = 100;	//Me : Defining for fgets()
 	char str[n];	//Me : Defining for fgets()
 	
 	while (fgets(str, n, file) != NULL) {	//Me : Read line by line until there is no more reading to read
@@ -85,11 +85,11 @@ void inputExercise(HealthData* health_data) {
     scanf("%d", &choice);	//Me : Scan the menu selected by the user and save it to choice
     
     // To enter the duration of the exercise
-    printf("Enter the duration of the exercise (in min.): ");
-    scanf("%d", &duration);
+    if((choice >= 1) && (choice <= exercise_list_size)){	//Me : When choice is a exercise menu
+		printf("Enter the duration of the exercise (in min.): ");
+    	scanf("%d", &duration);
 
     // ToCode: to enter the selected exercise and total calcories burned in the health data
-    if((choice >= 1) && (choice <= exercise_list_size)){	//Me : When choice is a exercise menu
 		health_data->exercises[health_data->exercise_count] = exercise_list[choice-1];	//Me : Store the selected execise_list at the execise_count of the execise array in health_data
 		health_data->exercises[health_data->exercise_count].calories_burned_per_minute *= duration;	//change the value of the stored execise_list's callories_burned_per_minute to the value multiplied by the duration
 		health_data->total_calories_burned += health_data->exercises[health_data->exercise_count].calories_burned_per_minute;	//Me : Add calories from the exercise you choose to the total_calories_burned of health_data

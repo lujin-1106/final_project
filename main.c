@@ -30,7 +30,7 @@ int main() {
     do {
     	if ( ){
             printf("You have consumed all your calories for today! \n");
-		} 
+		}
 		else{
 			printf("\n=======================================================================\n");
         	printf("[Healthcare Management Systems] \n");
@@ -50,6 +50,7 @@ int main() {
                 break;
                 
             case 2:
+            	loadDiets("diets.txt");
             	
                 break;
                 

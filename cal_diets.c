@@ -34,7 +34,19 @@ void loadDiets(const char* DIETFILEPATH) {
     }
 
      // ToCode: to read a list of the diets from the given file
-    while () {
+    
+    int n = 500;	//Me : Defining for fgets()
+	char str[n];	//Me : Defining for fgets()
+	
+	while (fgets(str, n, file) != NULL) {	//Me : Read line by line until there is no more reading to read
+    	
+    	char *food_name = strtok(str, " ");	//Me : the beginning of a sentence divided by a space - using strtok for dividing a sentence
+    	char *calories_intake = strtok(NULL, "\n");	//Me : dividing the remaining parts of a sentence by /n - using strtok 
+		
+		strcpy(diet_list[diet_list_size].food_name, food_name);	//Me : save diet_list as food_name in diet_list_size
+		diet_list[diet_list_size].calories_intake = atoi(calories_intake);	//Me : save as diet_list of diet_list_size's calories_intake- Use atoi to replace string with integer
+    	
+    	diet_list_size++;	//Me : Increase the number of saved diet_lists -> to see if there are more than 100
     	
         if (diet_list_size >= MAX_DIETS){
         	break;
@@ -58,6 +70,8 @@ void inputDiet(HealthData* health_data) {
     // ToCode: to provide the options for the diets to be selected
     printf("The list of diets:\n");
     
+    for (i=0; i < diet_list_size; i++)
+    	printf("%s")
     
 	// ToCode: to enter the diet to be chosen with exit option
     

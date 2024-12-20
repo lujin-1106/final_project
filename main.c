@@ -33,7 +33,7 @@ int main() {
     	
     	if (remain_calories == 0){	//Me : When the remaining calories are zero
             printf("You have consumed all your calories for today! \n");	
-            choice = 4;	//Me : Save the choice value to 4 -> enable termination
+            break;	//Me : enable termination
 		} 
 		else{
 			printf("\n=======================================================================\n");
@@ -65,6 +65,7 @@ int main() {
             	
     			printf("Exit the system.\n");
     			printf("=======================================================================\n");
+    			saveData("health_data.txt", &health_data);
                 break;
                 
             default:

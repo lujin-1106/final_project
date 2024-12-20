@@ -34,17 +34,25 @@ void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
 
     // ToCode: to save the chosen exercise and total calories burned 
     fprintf(file, "[Exercises] \n");
+    for (i = 0; i < health_data->exercise_count; i++)	//Me : 
+  		fprintf(file, "Exercise: %s, Calories burned : %d kcal\n", health_data->exercises[i].exercise_name, health_data->exercises[i].calories_burned_per_minute);	//Me :
     
     
     // ToCode: to save the chosen diet and total calories intake 
     fprintf(file, "\n[Diets] \n");
-
+	for (i = 0; i < health_data->diet_count; i++)	//Me : 
+		fprintf(file, "Food: %s, Calories intake : %d kcal\n", health_data->diet[i].food_name, health_data->diet[i].calories_intake);	//Me :
 
 
     // ToCode: to save the total remaining calrories
+    int remain_calories = health_data->total_calories_intake - 1300 - health_data->total_calories_burned;
     fprintf(file, "\n[Total] \n");
+    fprintf(file, "Basal Metabolic Rate: 1300 kcal\n");	//Me :
+ 	fprintf(file, "Total calories burned: %d kcal\n", health_data->total_calories_burned);	//Me :
+ 	fprintf(file, "Total calories intake: %d kcal\n", health_data->total_calories_intake);	//Me :
+ 	fprintf(file, "The remaining calories: %d kcal\n", remain_calories); 	//Me :	
     
-    
+    fclose(file);
 }
 
 /*

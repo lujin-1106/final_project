@@ -1,0 +1,11 @@
+[Exercises] 
+Exercise: walking, Calories burned : 8 kcal
+
+[Diets] 
+Food: rice, Calories intake : 600 kcal
+
+[Total] 
+Basal Metabolic Rate: 1300 kcal
+Total calories burned: 8 kcal
+Total calories intake: 600 kcal
+The remaining calories: -708 kcal

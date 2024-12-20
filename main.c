@@ -32,7 +32,8 @@ int main() {
     	int remain_calories = health_data.total_calories_intake - 1300 - health_data.total_calories_burned;	//Me : Calculation of remaining calories
     	
     	if (remain_calories == 0){	//Me : When the remaining calories are zero
-            printf("You have consumed all your calories for today! \n");	
+            printf("You have consumed all your calories for today! \n");
+			saveData("health_data.txt", &health_data);	//Me : Create health_data.txt file before shutdown
             break;	//Me : enable termination
 		} 
 		else{
@@ -58,14 +59,14 @@ int main() {
                 break;
                 
             case 3:
-            	printHealthData(&health_data); //Me : 
+            	printHealthData(&health_data); //Me : printHealthData function is executed
                 break;
                 
             case 4:
             	
     			printf("Exit the system.\n");
     			printf("=======================================================================\n");
-    			saveData("health_data.txt", &health_data);
+    			saveData("health_data.txt", &health_data);	//Me : Create health_data.txt file before shutdown
                 break;
                 
             default:

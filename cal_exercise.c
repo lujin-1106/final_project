@@ -81,12 +81,12 @@ void inputExercise(HealthData* health_data) {
 
     // ToCode: to enter the exercise to be chosen with exit option
 
- 	printf("Choose (1-%d): ", exercise_list_size+1);	//Me : Output Choose
+ 	printf("Choose (1-%d): ", exercise_list_size+1);	//Me : Outputting words to choice
     scanf("%d", &choice);	//Me : Scan the menu selected by the user and save it to choice
     
     // To enter the duration of the exercise
     if((choice >= 1) && (choice <= exercise_list_size)){	//Me : When choice is a exercise menu
-		printf("Enter the duration of the exercise (in min.): ");
+		printf("Enter the duration of the exercise (in min.): ");	//Me : Outputting words to receive duration
     	scanf("%d", &duration);
 
     // ToCode: to enter the selected exercise and total calcories burned in the health data

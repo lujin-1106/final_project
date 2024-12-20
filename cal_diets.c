@@ -76,7 +76,7 @@ void inputDiet(HealthData* health_data) {
     printf("%d. Exit\n", diet_list_size+1);	//Me : Output Exit Menu to Last Number
     
 	// ToCode: to enter the diet to be chosen with exit option
-    printf("Choose (1-%d): ", diet_list_size+1);	//Me : Output Choose
+    printf("Choose (1-%d): ", diet_list_size+1);	//Me : Outputting words to choice
     scanf("%d", &choice);	//Me : Scan the menu selected by the user and save it to choice
 
     // ToCode: to enter the selected diet in the health data

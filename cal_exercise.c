@@ -55,7 +55,6 @@ void loadExercises(const char* EXERCISEFILEPATH) {
 
     fclose(file);
     
-    inputExercise(); //Me : inputExercise function is executed immediately
 }
 
 
@@ -90,6 +89,17 @@ void inputExercise(HealthData* health_data) {
     scanf("%d", &duration);
 
     // ToCode: to enter the selected exercise and total calcories burned in the health data
+    if((choice >= 1) && (choice <= exercise_list_size)){	//Me : When choice is a exercise menu
+		health_data->exercises[health_data->exercise_count] = exercise_list[choice-1];	//Me : Store the selected execise_list at the execise_count of the execise array in health_data
+		health_data->exercises[health_data->exercise_count].calories_burned_per_minute *= duration;	//change the value of the stored execise_list's callories_burned_per_minute to the value multiplied by the duration
+		health_data->total_calories_burned += health_data->exercises[health_data->exercise_count].calories_burned_per_minute;	//Me : Add calories from the exercise you choose to the total_calories_burned of health_data
+		health_data->exercise_count++;	//Me: Increase exercise_count
+	}
+	else if (choice == exercise_list_size+1){	//Me : When choice is a Quit menu
+		printf("Go back to Main menu\n");	//Me : print "Go back to Main menu"
+	}
+	else {	//Me : When choice is unvalid
+		printf("You choose wrong menu!\n");	//Me : print "You choose wrong menu!"
+	}
     
-
 }

@@ -53,6 +53,7 @@ void loadDiets(const char* DIETFILEPATH) {
 		}
     }
     fclose(file);
+    
 }
 
 /*
@@ -68,19 +69,30 @@ void inputDiet(HealthData* health_data) {
     int choice, i;
     
     // ToCode: to provide the options for the diets to be selected
-    printf("The list of diets:\n");
+    printf("The list of diets:\n");	
     
-    for (i=0; i < diet_list_size; i++)
-    	printf("%s")
+    for (i=0; i < diet_list_size; i++)	//Me : Repeat as many values as stored in diet_list
+    	printf("%d. %s (%d kcal)\n", i+1, diet_list[i].food_name, diet_list[i].calories_intake);	//Me : Output the appropriate numbers and food menus and calories
+    printf("%d. Exit\n", diet_list_size+1);	//Me : Output Exit Menu to Last Number
     
 	// ToCode: to enter the diet to be chosen with exit option
-    
+    printf("Choose (1-%d): ", diet_list_size+1);	//Me : Output Choose
+    scanf("%d", &choice);	//Me : Scan the menu selected by the user and save it to choice
 
     // ToCode: to enter the selected diet in the health data
-    
-
-    // ToCode: to enter the total calories intake in the health data
-
-
+	if((choice >= 1) && (choice <= diet_list_size)){	//Me : When choice is a food menu
+		health_data->diet[health_data->diet_count] = diet_list[choice-1];	//Me : Save the selected diet_list at the diet_count of the diet array in health_data
+		health_data->diet_count++;	//Me: Increase Diet_count
+	
+	// ToCode: to enter the total calories intake in the health data
+		health_data->total_calories_intake += diet_list[choice-1].calories_intake;	//Me : Add calories from the food you choose to the total_calories_intake of health_data
+	}
+	else if (choice == diet_list_size+1){	//Me : When choice is a Quit menu
+		printf("Go back to Main menu\n");	//Me : print "Go back to Main menu"
+	}
+	else {	//Me : When choice is unvalid
+		printf("You choose wrong menu!\n");	//Me : print "You choose wrong menu!"
+	}
+	
 }
 
